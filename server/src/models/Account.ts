@@ -5,11 +5,6 @@ interface I extends Document, Account {}
 
 const instance = new Schema<I>(
   {
-    /*
-      document ID is set by default via MongoDB - the next line is deprecated!
-      _id: mongoose.Schema.Types.ObjectId,
-    */
-
     username: {
       type: String,
       required: true,
@@ -32,8 +27,7 @@ const instance = new Schema<I>(
   }
 )
 
-// NOTE! use a singular model name, mongoose automatically creates a collection like so:
-// model: 'Account' === collection: 'accounts'
+
 const modelName = 'Account'
 
 export default model<I>(modelName, instance)
