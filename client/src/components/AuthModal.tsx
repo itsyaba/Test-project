@@ -1,8 +1,8 @@
 import React, { type ChangeEventHandler, Fragment, useState } from 'react'
-import { useModalStore } from 'store/useModalStore'
-import { useAuth } from 'contexts/AuthContext'
 import { Dialog, DialogTitle, TextField, Button, CircularProgress } from '@mui/material'
-import { type FormData } from '@types'
+import { useAuth } from '../contexts/AuthContext'
+import { useModalStore } from '../store/useModalStore'
+import { FormData } from '../@types'
 
 interface Props {}
 
