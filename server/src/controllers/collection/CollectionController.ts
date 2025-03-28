@@ -1,13 +1,11 @@
 import { type RequestHandler } from 'express'
 import joi from '../../utils/joi'
-import jwt from '../../utils/jwt'
-import Account from '../../models/Account'
 import Collection from '../../models/Collection' // Assuming Collection model exists
 
 // Create a new collection
 const createCollection: RequestHandler = async (req, res, next) => {
   try {
-    const { name, isFavorite, dueDate } = req.body;
+    const { name, isFavorite, dueDate, icon } = req.body;
 
     // Ensure `req.auth.uid` is being extracted correctly
     if (!req.auth?.uid) {
@@ -19,6 +17,7 @@ const createCollection: RequestHandler = async (req, res, next) => {
       account: req.auth.uid, // Assign logged-in user's account ID
       isFavorite: isFavorite || false,
       dueDate,
+      icon: icon || 'person', // Use provided icon or default
       tasks: [],
     });
 
@@ -60,6 +59,7 @@ const updateCollection: RequestHandler = async (req, res, next) => {
         name: joi.instance.string().optional(),
         isFavorite: joi.instance.boolean().optional(),
         dueDate: joi.instance.date().optional(),
+        icon: joi.instance.string().optional(), // Add icon validation
       },
       req.body
     )

@@ -6,6 +6,7 @@ interface ICollection extends Document {
   isFavorite?: boolean;
   tasks: mongoose.Types.ObjectId[];
   dueDate?: Date;
+  icon?: string; // Add icon field to interface
 }
 
 const CollectionSchema = new Schema<ICollection>({
@@ -14,6 +15,7 @@ const CollectionSchema = new Schema<ICollection>({
   isFavorite: { type: Boolean, default: false },
   tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
   dueDate: { type: Date },
+  icon: { type: String, default: 'person' } // Add icon field with default emoji
 });
 
 export default mongoose.model<ICollection>('Collection', CollectionSchema);
