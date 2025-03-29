@@ -1,5 +1,5 @@
 const allowedOrigins = [
-  process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : process.env.FRONTEND_URL,
+  process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://todo-front-eight-cyan.vercel.app',
   'http://localhost:3000'
 ].filter(Boolean);
 
